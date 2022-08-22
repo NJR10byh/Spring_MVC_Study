@@ -1,12 +1,14 @@
 package com.migufun.controller;
 
 import com.migufun.pojo.User;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -68,5 +70,14 @@ public class UserController
     {
         System.out.println(lists);
         return "{'module':'集合类型参数'}";
+    }
+    
+    // 日期类型参数
+    @RequestMapping("/dateparam")
+    @ResponseBody
+    public String dateParam(@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Date date)
+    {
+        System.out.println(date);
+        return "{'module':'dateParam'}";
     }
 }
